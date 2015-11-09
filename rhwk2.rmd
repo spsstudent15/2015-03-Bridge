@@ -1,0 +1,40 @@
+
+R Homework #2
+============
+BY ARMENOUSH ASLANIAN-PERSICO  
+
+In probability, "n choose r" means n! / (( n - r)! * r!).  
+For example, "5 choose 3" evaluates to 10.  
+
+**Test with n=5, r=3**
+
+```{r}
+x<-1
+y<-1
+z<-1
+n<-5 
+r<-3 
+
+for(i in n:1){ #how can I write the code to reject n,r<1?
+  x<-x*i
+}
+
+nfact<-x
+nminr<-(n-r)
+
+for(i in nminr:1){
+  y<-y*i
+}
+
+nminrfact<-y
+
+for(i in r:1){
+  z<-z*i
+}
+
+rfact<-z
+
+ncr<- nfact/(nminrfact*rfact)
+
+```
+n choose r evaluates to **`r ncr`**
