@@ -1,0 +1,35 @@
+
+
+R Homework #3
+============
+BY ARMENOUSH ASLANIAN-PERSICO  
+
+I had some difficulties with this assignment.
+The install packages commands were successful in the .R file but not the .rmd file. In the rmd file this resulted in an error "trying to use CRAN without setting a mirror..."
+
+```{r}
+install.packages("plyr")
+install.packages("data.table")
+library(data.table)
+library(plyr)
+agaricus.lepiota<-read.csv("https://github.com/spsstudent15/msda/blob/master/agaricus-lepiota.data")
+agarDT<-data.table(agaricus.lepiota)
+agarDF<-data.frame(agaricus.lepiota)
+agarSUB<-subset(agarDF, select=c("V1","V2","V3","V5","V21"))
+agarSUB2<-rename(agarSUB,c("V1"="Edible/Poisonous","V2"="Cap Shape","V3"="Cap Surface","V5"="Cap Color","V21"="Population"))
+
+print(head(agarSUB2))
+```
+
+
+I was able to rename the column headers but not the variables.
+
+```{r}
+revalue(V1,c("p"="poisonous","e"="edible"))
+revalue(V2,c("b"="bell","c"="conical","x"="convex","f"="flat","k"="knobbed","s"="sunken"))
+revalue(v3,c("f"="fibrous","g"="grooves","y"="scaly","s"="smooth"))
+revalue(v5,c("n"="brown","b"="buff","c"="cinnamon","g"="gray","r"="green","p"="pink","u"="purple","e"="red","w"="white","y"="yellow"))
+revalue(v21,c("a"="abundant","c"="clustered","n"="numerous","s"="scattered","v"="several","y"="solitary"))
+
+print(head(agarSUB2))
+```
